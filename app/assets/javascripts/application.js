@@ -22,14 +22,14 @@ var fakeData = [
 ];
 
 var AoRApp = angular.module('AoR', [])
-.controller('MainController', 
+.controller('MainController', [ '$scope', '$http' 
 function($scope, $http) {
   $scope.var1 = 'CodingHouse';
   // $scope.questions = fakeData;
   $http.get("/questions").then(function(response){
     debugger;
     $scope.questions = response.data;
-  });
+  }]);
 
   $scope.addQuestion = function() {
     debugger;

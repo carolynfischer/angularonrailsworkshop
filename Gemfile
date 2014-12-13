@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 
 # angular
 gem 'angularjs-rails'
+
+gem 'gravatar-ultimate'
