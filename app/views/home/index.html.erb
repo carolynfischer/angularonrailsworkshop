@@ -34,7 +34,18 @@
       <div class="row">
         <div class="col-md-12">
           <h2>Questions</h2>
-          <div class="row replace-with-data"> <div class="col-md-6"> <div class="well"> <div class="media"> <a class="pull-left" href="question-details.html?id=0"> <img class="media-object img-circle" src="http://www.gravatar.com/avatar/118eafde997b09ac977f5ed25993ff5f?s=128 " alt="..."> </a> <div class="media-body"> <h4 class="media-heading">james1@manofstone.com asks</h4> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae earum amet tenetur, perferendis voluptatibus eius pariatur corporis soluta, illum odio quis iure voluptas dolor ea, impedit! Fugiat quas in, perspiciatis.</p> <a href="question-details.html" class="btn btn-info pull-right">View Answers »</a> </div> </div> </div></div>
+          <div class="row replace-with-data"> <div class="col-md-6" ng-repeat="question in questions"> 
+            <div class="well"> 
+              <div class="media"> 
+                <a class="pull-left" href="question-details.html?id=0"> 
+                  <img class="media-object img-circle" src="http://www.gravatar.com/avatar/118eafde997b09ac977f5ed25993ff5f?s=128 " alt="..."> </a> 
+                  <div class="media-body"> <h4 class="media-heading">{{question.email}} asks</h4> 
+                    <p>{{question.body}}</p> 
+                    <a href="question-details.html" class="btn btn-info pull-right">View Answers »</a> 
+                  </div> 
+                </div> 
+              </div>
+            </div>
         </div>
       </div>
       <hr>
@@ -55,18 +66,18 @@
         <h4 class="modal-title" id="askQuestionModalLabel">So what would you like to know?</h4>
 
       </div>
-      <form class="form-horizontal" id="submit-a-question" role="form" onsubmit="addQuestion()">
+      <form class="form-horizontal" id="submit-a-question" role="form">
         <div class="modal-body">
           <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" placeholder="Email">
+              <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
             </div>
           </div>
           <div class="form-group">
             <label for="inputQuestion" class="col-sm-2 control-label">Question</label>
             <div class="col-sm-10">
-              <textarea class="form-control" rows="8" placeholder="Ask your Question here..." id="question"></textarea>
+              <textarea class="form-control" rows="8" placeholder="Ask your Question here..." id="question" ng-model="body"></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -76,7 +87,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Bring me my answers »</button>
+          <button type="submit" class="btn btn-primary" ng-click="addQuestion()">Bring me my answers »</button>
         </div>
       </form>
     </div>
